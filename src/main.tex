@@ -1,0 +1,377 @@
+\documentclass[10pt]{article}
+
+\usepackage[dvipsnames]{xcolor}
+\usepackage[skins]{tcolorbox}
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks=false,
+  allbordercolors=black,
+  pdfborderstyle={/S/U}
+}
+
+\usepackage{moresize}
+\usepackage{calc}
+\usepackage{enumitem}
+\usepackage{geometry}
+\usepackage{fix-cm}
+
+\setlength{\parindent}{0mm}
+\pagestyle{empty}
+\geometry{
+    paper=a4paper,
+    top=0px,
+    bottom=0px,
+    left=0px,
+    right=1cm,
+    headheight=0.75cm,
+    footskip=1cm,
+    headsep=0.5cm,
+}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{helvet}
+\renewcommand\familydefault{\sfdefault}
+\linespread{1.15}
+
+
+\usepackage{fontawesome}
+\newcommand{\vcenteredhbox}[1]{
+    \begingroup%
+        \setbox0=\hbox{#1}\parbox{\wd0}{\box0}%
+    \endgroup%
+}
+\newcommand{\icon}[3]{
+    \vspace{2px}
+    \vcenteredhbox{\makebox(#2, #2){\textcolor{white}{\large\csname fa#1\endcsname}}}
+    \hspace{0.5em}
+    \vcenteredhbox{#3}
+    \vspace{2px}
+}
+
+
+\usepackage{tikz}
+\usetikzlibrary{shapes, backgrounds,positioning, calc}
+\tikzset{x=1cm, y=1cm}
+
+
+\usepackage{ifthen}
+\newenvironment{barchart}[1]{
+    \def\barwidth{10px}
+    \def\currspacing{2mm}
+
+    \newcommand{\baritem}[3][]{
+        \pgfmathparse{#1}
+        \let\barsize\pgfmathresult
+
+        \pgfmathparse{\barsize*##3/100}
+        \let\barone\pgfmathresult
+
+        \node(Label) [
+            text width=\barsize,
+            yshift=-\currspacing,
+            anchor=north west
+        ] at (ActualBar.south -| 0,1) {##2};
+        \node(FullWidth) [
+            yshift=-4mm,
+            draw=white, fill=gray, rectangle, minimum width=\barsize, minimum height=\barwidth,
+            anchor=south west
+        ] at (Label.south -| 0,1) {};
+        \node(ActualBar) [
+            yshift=-4mm,
+            draw=white, fill=white, rectangle, minimum width=\barone, minimum height=\barwidth,
+            anchor=south west
+        ] at (Label.south -| 0,1) {};
+        \ifthenelse{\equal{##1}{}}{
+            \def\currspacing{2mm}
+        }{
+            \def\currspacing{-2mm}
+            \node(ActualBar) [
+                yshift=-1mm,
+                anchor=north east,
+            ] at (ActualBar.south -| \barone pt,1) {##1};
+        }
+    }
+    \begin{tikzpicture}[node distance=5mm]
+        \linespread{1}
+        \node(ActualBar) [anchor=south west] at (0,0) {};
+}{
+    \end{tikzpicture}
+}
+
+
+\tcbuselibrary{breakable}
+\definecolor{leftBackground}{RGB}{38,43,164}
+\definecolor{leftSectionTitle}{RGB}{31,33,74}
+\definecolor{rightSectionTitle}{RGB}{234,234,234}
+\newenvironment{leftColumn}[1]{
+    \hypersetup{hidelinks}
+    \noindent
+    \begin{minipage}[t]{#1}
+        \vspace*{-\baselineskip}
+        \begin{tcolorbox}[size=tight,
+                sharp corners,
+                height fill,
+                enhanced,
+                colback=leftBackground,
+                colframe=leftBackground,
+                coltext=white,
+                left=0.5cm,
+                right=0.5cm,
+                bottom=1cm,
+                top=1cm]
+            \linespread{1.5}
+            \hfill
+}{
+        \end{tcolorbox}
+    \end{minipage}\ignorespaces%
+}
+
+\newcommand{\cvsect}[1]{
+    \vspace{-6px}
+    \begin{tcolorbox}[
+            sharp corners,
+            enhanced,
+            colback=leftSectionTitle,
+            colframe=leftSectionTitle,
+            coltext=white,
+            left=0.5cm,
+            right=0.5cm,
+            bottom=4pt,
+            top=4pt,
+            width=\linewidth+1cm,
+            enlarge left by=-0.5cm,
+            enlarge right by=0.5cm,
+            fontupper=\large]
+        \begin{center}\MakeUppercase{\textbf{#1}}\end{center}
+    \end{tcolorbox}
+    \vspace*{-\baselineskip}
+}
+\newcommand{\cvrsect}[1]{
+    \begin{tcolorbox}[
+            sharp corners,
+            enhanced,
+            colback=rightSectionTitle,
+            colframe=rightSectionTitle,
+            coltext=leftBackground,
+            left=0.5cm,
+            right=0.5cm,
+            bottom=4pt,
+            top=4pt,
+            width=\linewidth+8.5px,
+            enlarge left by=-8.5px,
+            fontupper=\large]
+        \MakeUppercase{\textbf{#1}}
+    \end{tcolorbox}
+    \vspace*{-0.5\baselineskip+0.75em}
+}
+
+
+\def\leftcolumnwidth{0.3\textwidth}
+\begin{document}
+\begin{leftColumn}{\leftcolumnwidth}
+    \begin{center}
+        \textbf{\Large Stanislav Terliakov}
+
+        \vspace{0.75em}
+
+        {\large Software Engineer}
+    \end{center}
+
+    \vspace{0.5em}
+
+    \cvsect{Personal Info}
+    \vspace{4mm}
+    \icon{MapMarker}{12}{Belgrade, Serbia}\\
+    \icon{Phone}{12}{+381~62~121-4338}\\
+    \icon{At}{12}{\href{mailto:terlya.stas@gmail.com}{terlya.stas@gmail.com}}\\
+    \icon{Github}{12}{\href{https://github.com/sterliakov}{github.com/sterliakov}}\\
+    \icon{StackOverflow}{12}{\href{https://stackoverflow.com/u/14401160}{@STerliakov}}\\
+    \icon{Trophy}{12}{\href{https://devpost.com/sterliakov}{devpost.com/sterliakov}}\\
+
+    \cvsect{Skills}
+    \begin{barchart}{\textwidth}
+        \baritem{Python 3, Django, Flask}{100}
+        \baritem{Git, GitHub actions, CodeBuild}{100}
+        \baritem{CI\&CD: lint, test, deploy}{100}
+        \baritem{Docker}{100}
+        \baritem{AWS serverless stack\\(Lambda, Step Functions)}{100}
+        \baritem{Rust}{90}
+        \baritem{TypeScript, React 18}{80}
+        \baritem{Linux, bash scripting}{80}
+        \baritem{AWS server deployments\\(EC2, CodeDeploy)}{80}
+        \baritem{SQL}{80}
+        \baritem{Terraform}{80}
+    \end{barchart}
+
+    \cvsect{Languages}
+    \begin{barchart}{\textwidth}
+        \baritem[native]{Russian}{100}
+        \baritem[fluent]{English}{80}
+        \baritem[basic]{German}{40}
+    \end{barchart}
+\end{leftColumn}
+\hspace{6pt}
+\begin{minipage}[t]{\textwidth - \leftcolumnwidth - 6pt}
+    \vspace{0.5cm-\baselineskip+4px}
+    Creative full-stack software engineer with strong backend preference.
+    Previous accomplishments include recovery of an ML startup from system design failures, solo developing patient management system for German dental clinics, and multiple hackathon prizes.
+    An innovative creative thinker, always ready to learn and striving for greatness.
+
+    \cvrsect{Work experience}
+    \textbf{Chief Technical Officer}
+    \hfill
+    \textit{\href{https://simpleem.com/}{Simpleem}}
+    \vspace{1em}
+
+    \begin{minipage}{0.25\textwidth}
+        06/2023~--- now
+    \end{minipage}
+    \begin{minipage}{0.75\textwidth}
+
+        \begin{itemize}[topsep=4pt,parsep=0pt,leftmargin=*]
+            \item
+            \raggedright
+            Designed, deployed and maintained \textbf{serverless backend and ML inference infrastructure} on AWS with focus on reliability, observability and cost reduction.
+
+            \item
+            \raggedright
+            Successfully passed \textbf{SOC2 audit} with minimal changes.
+
+            \item
+            \raggedright
+            Built \textbf{native integrations} (apps) for Zoom, Webex, Zapier, MS~Teams, HubSpot, Salesforce, Slack and Telegram.
+
+            \item
+            \raggedright
+            Developed an \textbf{automated devops pipeline} for testing and deployment (\textit{pre-commit}, \textit{ruff}, \textit{uv}, \textit{mypy}, \textit{pytest}, \textit{CodeBuild}).
+
+            \item
+            \raggedright
+            Implemented a WebRTC-driven \textbf{video pitching game} with real-time serverless CPU inference.
+        \end{itemize}
+    \end{minipage}
+
+    \vspace{1em}
+
+    \textbf{Full-stack Developer}
+    \hfill
+    \textit{\href{https://1gency.ee/}{1gency}}
+
+    \vspace{1em}
+
+    \begin{minipage}{0.25\textwidth}
+        06/2022~--- 06/2023
+    \end{minipage}
+    \begin{minipage}{0.75\textwidth}
+
+        \begin{itemize}[topsep=4pt,parsep=0pt,leftmargin=*]
+            \item
+            \raggedright
+            Working in a team, developed a Flask-based \textbf{dashboard application} for a financial organisation.
+
+            \item
+            \raggedright
+            Participated in \textbf{code review} to ensure high code quality.
+
+            \item
+            \raggedright
+            In a team or solo, worked on a few small one-time projects related to supporting or upgrading existing software solutions.
+        \end{itemize}
+    \end{minipage}
+
+    \vspace{1em}
+
+    \textbf{Software Engineer}
+    \hfill
+    \textit{\href{https://upwork.com/}{Upwork} (as a freelancer)}
+
+    \vspace{1em}
+
+    \begin{minipage}{0.25\textwidth}
+        05/2021~--- 06/2022
+    \end{minipage}
+    \begin{minipage}{0.75\textwidth}
+
+        \begin{itemize}[topsep=4pt,parsep=0pt,leftmargin=*]
+            \item
+            \raggedright
+            Working as solo developer, created beta version of a \textbf{patient management system} for German dental clinics with
+            \textit{Python~3.9\,\&\,3.10}, \textit{Django}, \textit{Celery}, \textit{PostgreSQL} and \textit{Redis}.
+        \end{itemize}
+    \end{minipage}
+
+    \vspace{1em}
+
+    \textbf{Full-stack Developer (part-time)}
+    \hfill
+    \textit{\href{https://chemolymp.ru/}{Project Chemistry Olympiad}}
+
+    \vspace{1em}
+
+    \begin{minipage}{0.25\textwidth}
+        04/2019~--- now
+    \end{minipage}
+    \begin{minipage}{0.75\textwidth}
+
+        \begin{itemize}[topsep=4pt,parsep=0pt,leftmargin=*]
+            \item
+            \raggedright
+            Built a participant personal profile page and \textbf{contest management system} (\textit{Django, Docker, Amazon EC2}).
+        \end{itemize}
+    \end{minipage}
+
+    \cvrsect{Other experience}
+    \vspace{-1em}
+    \begin{itemize}
+        \setlength\itemsep{0em}
+        \item
+        \raggedright
+        \textbf{2nd place overall} and \textbf{Python SDK ABI v2} special nomination for blockchain SDK in python~--- \href{https://devpost.com/software/thor-devkit-py}{VeChain Hackathon}.
+
+        \item
+        \raggedright
+        \textbf{Awards} of \href{https://devpost.com/sterliakov}{5 more hackathons} in different fields.
+
+        \item
+        \raggedright
+        Active contributor to open-source python packages, including \textit{mypy} and python own infrastructure.
+    \end{itemize}
+
+    \cvrsect{Education}
+    \begin{minipage}{0.25\textwidth}
+        09/2020 --- 02/2022
+    \end{minipage}
+    \begin{minipage}{0.75\textwidth}
+        \textbf{\href{https://mipt.ru/english/}{Moscow Institute of Physics and Technology}}
+
+        \begin{itemize}[topsep=4pt,parsep=1pt,leftmargin=*]
+            \item
+            Relevant courses (completed): algorithms and data structures, Linux administration
+
+            \item
+            Additionally: advanced math courses (real analysis, complex analysis, analytic geometry and linear algebra, probability theory)
+        \end{itemize}
+    \end{minipage}
+
+    \vspace{6pt}
+    \begin{minipage}{0.5\textwidth}
+        \cvrsect{Hobbies and interests}
+        \vspace{-1em}
+        \begin{itemize}[topsep=4pt,parsep=1pt]
+            \item Hiking, climbing
+            \item Blockchain
+            \item Molecular biology
+        \end{itemize}
+    \end{minipage}
+    \begin{minipage}{0.5\textwidth}
+        \cvrsect{Soft skills}
+        \vspace{-1em}
+        \begin{itemize}[topsep=4pt,parsep=1pt]
+            \item Flexibility \& Adaptability
+            \item Attention to details
+            \item Problem-solving
+        \end{itemize}
+    \end{minipage}
+\end{minipage}
+\end{document}

@@ -1,0 +1,110 @@
+\documentclass[9pt]{article}
+
+\usepackage[dvipsnames]{xcolor}
+\usepackage[skins]{tcolorbox}
+\usepackage[hidelinks]{hyperref}
+
+\usepackage{moresize}
+\usepackage{calc}
+\usepackage{enumitem}
+\usepackage{geometry}
+\usepackage{indentfirst}
+\usepackage{fix-cm}
+
+\pagestyle{empty}
+\geometry{
+	paper=a4paper,
+	top=0cm,
+	bottom=2cm,
+	left=0cm,
+	right=0cm,
+	headheight=0.75cm,
+	footskip=1cm,
+	headsep=0.5cm,
+}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{helvet}
+\renewcommand\familydefault{\sfdefault}
+\linespread{1.15}
+
+
+\usepackage{fontawesome}
+\newcommand{\vcenteredhbox}[1]{
+	\begingroup%
+		\setbox0=\hbox{#1}\parbox{\wd0}{\box0}%
+	\endgroup%
+}
+\newcommand{\icon}[3]{
+	\vcenteredhbox{\makebox(#2, #2){\textcolor{white}{\large\csname fa#1\endcsname}}}
+	\hspace{0.2cm}
+	\vcenteredhbox{#3}
+}
+
+
+\definecolor{leftBackground}{RGB}{38,43,164}
+\definecolor{leftSectionTitle}{RGB}{31,33,74}
+\begin{document}
+	\begin{tcolorbox}[size=tight,
+			sharp corners,
+			% height fill,
+			enhanced,
+			colback=leftBackground,
+			colframe=leftBackground,
+			coltext=white,
+			left=2cm,
+			right=2cm,
+			bottom=1cm,
+			top=1cm]
+		\linespread{1.5}
+		\setlength{\parskip}{12px}
+
+		\center
+
+		{\LARGE STANISLAV TERLIAKOV}
+
+		\icon{At}{12pt}{terlya.stas@gmail.com}
+		\hfill
+		\icon{Phone}{12pt}{+7 916 386-30-90}
+		\hfill
+		\icon{MapMarker}{12pt}{Moscow}
+	\end{tcolorbox}
+
+	\vspace{1cm}
+
+	\hspace{1.5cm}
+	\begin{minipage}{\linewidth - 4cm}
+		\setlength{\parindent}{2em}
+		\setlength{\parskip}{6px}
+		\noindent
+		\today
+
+		\noindent
+                \textbf{\Large Company address here}
+
+		\vspace{1cm}
+
+                \textbf{\Large Company-specific text here}
+
+		Also, I enjoy being challenged and engaging with projects that require me to work outside my comfort and knowledge set, 
+                as continuing to learn new languages and development techniques are essential for me and the success of your organization.
+
+		Your listed requirements closely match my skills. Some of them will enable me to contribute to your
+                projects~--- I would like to highlight:
+
+		\vspace{-9px}
+		\begin{itemize}
+			\setlength{\itemsep}{0px}
+			\item Deep knowledge of Python and Django framework
+			\item Frontend experience with Javascript
+			\item Amazon AWS deployment experience, familiarity with Docker and CI systems
+			\item Good collaboration skills, problem-solving, and self-learning ability.
+		\end{itemize}
+
+		Thank you for your time and consideration. I look forward to speaking with you about this opportunity.
+
+		Sincerely,\\
+		\indent Stanislav Terliakov
+	\end{minipage}
+\end{document}
