@@ -9,5 +9,5 @@ build:
     @echo 'Built CV in main.pdf'
 
 clean:
-    @rm *.log *.aux *.out
+    @rm -f *.log *.aux *.out
 
