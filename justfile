@@ -1,13 +1,13 @@
 set shell := ["bash", "-uc"]
-set positional-arguments
 
 default:
     @just --list
 
 build:
-    @pdflatex src/main.tex
-    @echo 'Built CV in main.pdf'
+    @mkdir -p out
+    @pdflatex -output-directory=out src/main.tex
+    @mv out/main.pdf ./CV.pdf
+    @echo 'Built CV in CV.pdf'
 
 clean:
-    @rm -f *.log *.aux *.out
-
+    @rm -f out/* CV.pdf
