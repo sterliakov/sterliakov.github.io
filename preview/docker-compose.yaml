@@ -1,0 +1,14 @@
+services:
+  preview:
+    build:
+      context: .
+    ports:
+      - 4000:4000
+    volumes:
+      - ${PWD}:/src/jekyll/:ro
+      - cache_volume:/src/.jekyll-cache/
+      - cache_volume_sass:/src/.sass-cache/
+
+volumes:
+  cache_volume:
+  cache_volume_sass:

@@ -11,3 +11,12 @@ build:
 
 clean:
     @rm -f out/* CV.pdf
+
+up-live:
+    @docker compose -f preview/docker-compose.yaml up -d --build --wait --force-recreate
+
+logs-live:
+    @docker compose -f preview/docker-compose.yaml logs
+
+stop-live:
+    @docker compose -f preview/docker-compose.yaml down

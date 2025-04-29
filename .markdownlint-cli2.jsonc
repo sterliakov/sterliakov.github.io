@@ -1,0 +1,6 @@
+{
+    "config": {
+        // Allow inline HTML
+        "MD033": false
+    }
+}

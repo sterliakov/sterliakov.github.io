@@ -1,0 +1,18 @@
+title: Stanislav Terliakov
+description: 'Full-stack developer: Python, Django, TypeScript, PostgreSQL, AWS'
+show_downloads: false
+remote_theme: pages-themes/hacker@v0.2.0
+repository: sterliakov/sterliakov.github.io
+plugins:
+  # Default for local rendering
+  - jekyll-coffeescript
+  - jekyll-default-layout
+  - jekyll-gist
+  - jekyll-github-metadata
+  - jekyll-optional-front-matter
+  - jekyll-paginate
+  - jekyll-readme-index
+  - jekyll-titles-from-headings
+  - jekyll-relative-links
+  # Custom
+  - jekyll-remote-theme
