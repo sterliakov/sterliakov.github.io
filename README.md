@@ -107,7 +107,7 @@ optional typing to an inherently dynamic language. I really enjoy the ability
 to increase code correctness (and our own confidence in it) without sacrificing
 flexibility.
 
-While I’m not the original author, I’ve contributed around 50 PRs ranging from
+While I'm not the original author, I've contributed around 50 PRs ranging from
 [correcting a small omission](https://github.com/python/mypy/pull/18620)
 to hunting down and fixing a [critical bug](https://github.com/python/mypy/pull/18906)
 that affected a wide number of users.
@@ -123,7 +123,7 @@ issue, wait for results to be reported there. Done!
 
 ### Simple time tracker client: [`toggl`](https://github.com/sterliakov/toggl)
 
-I  was using Toggl to track my work hours until they [deprecated](https://github.com/toggl-open-source/toggldesktop)
+I've been using Toggl to track my work hours until they have [deprecated](https://github.com/toggl-open-source/toggldesktop)
 the native Linux app and suggested using a browser extension instead. I'm
 allergic to browser extensions for daily tasks, so I built a
 minimal Rust-based client tailored to my own needs.
