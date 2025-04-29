@@ -104,14 +104,17 @@
 \definecolor{leftBackground}{RGB}{38,43,164}
 \definecolor{leftSectionTitle}{RGB}{31,33,74}
 \definecolor{rightSectionTitle}{RGB}{234,234,234}
+\newlength{\leftcolheight}
+\setlength{\leftcolheight}{\paperheight+\baselineskip/2}
 \newenvironment{leftColumn}[1]{
     \hypersetup{hidelinks}
     \noindent
     \begin{minipage}[t]{#1}
         \vspace*{-\baselineskip}
-        \begin{tcolorbox}[size=tight,
+        \begin{tcolorbox}[
+                size=tight,
                 sharp corners,
-                height fill,
+                height=\leftcolheight,
                 enhanced,
                 colback=leftBackground,
                 colframe=leftBackground,
@@ -119,7 +122,8 @@
                 left=0.5cm,
                 right=0.5cm,
                 bottom=1cm,
-                top=1cm]
+                top=1cm,
+            ]
             \linespread{1.5}
             \hfill
 }{
@@ -185,6 +189,7 @@
     \icon{MapMarker}{12}{Belgrade, Serbia}\\
     \icon{Phone}{12}{+381~62~121-4338}\\
     \icon{At}{12}{\href{mailto:terlya.stas@gmail.com}{terlya.stas@gmail.com}}\\
+    \icon{Rss}{12}{\href{https://sterliakov.github.io}{sterliakov.github.io}}\\
     \icon{Github}{12}{\href{https://github.com/sterliakov}{github.com/sterliakov}}\\
     \icon{StackOverflow}{12}{\href{https://stackoverflow.com/u/14401160}{@STerliakov}}\\
     \icon{Trophy}{12}{\href{https://devpost.com/sterliakov}{devpost.com/sterliakov}}\\
