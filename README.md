@@ -15,38 +15,38 @@ stack --- from infrastructure to user-facing UI details.
 
 ## Technology stack I enjoy the most
 
-* Backend: Python, Django (except for somewhat limiting ORM) + DRF or
+* Backend: Python, Django (except for the somewhat limiting ORM) + DRF or
   FastAPI with SQLAlchemy and Alembic (more powerful, but more boilerplate).
 * Databases: PostgreSQL if we're talking SQL, DynamoDB for something less
   structured.
-* Frontend: JavaScript or TypeScript (please don't tell me the latter is
-  superior, it isn't for small and simple projects) with React and Tailwind.
-  For quick prototyping I've had some exceptional experience using
+* Frontend: JavaScript or TypeScript (depending on the size of the project)
+  with React and Tailwind.
+  For quick prototyping I've had some exceptional experience with
   [shadcn/ui](https://ui.shadcn.com/).
-* Infra: AWS is my favorite, with some features simply unmatched by other
+* Infra: AWS is my favourite, with some features simply unmatched by other
   major providers. And Docker is the most convenient way to ship exactly
-  what you test, with `docker compose` offering instant local environment
+  what you test, with `docker compose` offering an instant local environment
   setup.
 * Tooling: [`pre-commit`](https://https://pre-commit.com/), GitHub actions,
   [`ruff`](https://docs.astral.sh/ruff/), [`uv`](https://docs.astral.sh/uv/),
-  [`biomejs`](https://biomejs.dev/) (though they still lack some ESLint features),
+  [`biomejs`](https://biomejs.dev/) (although they still lack some ESLint features),
   the list goes on... And, quite controversially, Jira as a project
   management tool.
 * Dev environment: I'm running Lubuntu on my primary laptop and use Sublime
-  Text instead of IDE. I also use vim for any editing that doesn't need 10
+  Text instead of an IDE. I also use Vim for any editing that doesn't need ten
   open tabs and perform a lot of tasks via CLI.
 * Rust: it doesn't clearly fall into any of categories above, but all my
   experience with it has been overwhelmingly positive.
 
 ## My Current Role
 
-I'm currently the CTO at [Simpleem](https://simpleem.com/),
+I'm currently the CTO of [Simpleem](https://simpleem.com/),
 where we are building a system that uses the power of machine learning to
 quantify and classify behavioral traits of video call participants.
 
 Our platform helps sales teams improve performance by analyzing behavior and
 highlighting the most impactful moments of conversations. HR teams can use
-Simpleem to streamline candidate evaluation, reduce manual screening,
+Simpleem to streamline candidate assessment, reduce manual screening,
 and identify candidates who best fit their culture and team dynamics.
 
 We've developed a system that can predict deal outcomes with a high degree
@@ -69,7 +69,7 @@ responsible for):
   on Lambda and connected to an RDS database.
   It **scales** effortlessly and remains extremely **cost-efficient**.
 * Our frontend (TypeScript + React) avoids unnecessary complexity --- no SSR,
-  just a static site served via S3 and CloudFront. It's fast, lightweight, and
+  just a static site served from S3 via CloudFront. It's fast, lightweight, and
   easy to maintain.
 * As a side product, we ship a **WebRTC-driven video pitch game**.
   It was fun to build and probably deserves its own write-up.
@@ -85,17 +85,17 @@ responsible for):
 
 ## Outside of Work
 
-In my free time, I enjoy bouldering --- a form of rock climbing focused on
-short but challenging routes on low walls. Recently I climbed my first `7b/+`
-route --- still proud of that milestone!
+In my spare time I enjoy bouldering --- a form of rock climbing that focuses on
+short but challenging routes on low walls. I recently climbed my first `7b/+`
+route --- still proud of this milestone!
 
-I'm also lucky to have a supportive family: my amazing wife who encourages me
-through everything, a cheerful medium-sized dog (a mixed-bread rescue we found
+I'm also lucky to have a supportive family: my amazing wife, who encourages me
+through everything, a cheerful medium-sized dog (a mixed-breed rescue we found
 in Armenia --- she won us over instantly!) and two cats who seem to think
 4 a.m. is the perfect time to start the day.
 
-I studied at [MIPT](https://old.mipt.ru/english/) and was working toward a
-Bachelor's degree. I had to leave the program and relocate in 2022, but the
+I studied at [MIPT](https://old.mipt.ru/english/) and was working towards a
+Bachelor's degree. I had to leave the programme and relocate in 2022, but the
 experience deeply shaped my thinking and technical foundation.
 
 ## My pet projects
@@ -104,28 +104,28 @@ experience deeply shaped my thinking and technical foundation.
 
 If you're unfamiliar, `mypy` is a static type checker for Python that brings
 optional typing to an inherently dynamic language. I really enjoy the ability
-to increase code correctness (and our own confidence in it) without sacrificing
-flexibility.
+to increase the correctness of the code and our own confidence in it without
+sacrificing flexibility.
 
-While I'm not the original author, I've contributed around 50 PRs ranging from
+Although I'm not the original author, I've contributed around 50 PRs ranging from
 [correcting a small omission](https://github.com/python/mypy/pull/18620)
 to hunting down and fixing a [critical bug](https://github.com/python/mypy/pull/18906)
-that affected a wide number of users.
+that affected a large number of users.
 
 ### Developer tooling: [`mypy-issues`](https://github.com/sterliakov/mypy-issues)
 
 A small helper built with Python and GitHub actions to check `mypy`
 changes against the corpus of open project issues. It helps us keep the tracker
-clean and notice some regressions before the PR gets merged.
+clean and catch some regressions before the PR gets merged.
 
-I enjoyed building something that runs entirely via GitHub interface: open an
-issue, wait for results to be reported there. Done!
+I have enjoyed building something that runs entirely via GitHub interface:
+open an issue, wait for the results to be reported there. Done!
 
 ### Simple time tracker client: [`toggl`](https://github.com/sterliakov/toggl)
 
 I've been using Toggl to track my work hours until they have [deprecated](https://github.com/toggl-open-source/toggldesktop)
 the native Linux app and suggested using a browser extension instead. I'm
-allergic to browser extensions for daily tasks, so I built a
+allergic to browser extensions for everyday tasks, so I built a
 minimal Rust-based client tailored to my own needs.
 
 The client has to deal with some unique API design: Toggl API returns time
@@ -138,11 +138,11 @@ resolve them dynamically. It's a workaround, but it works!
 
 ### Terraform [module](https://github.com/sterliakov/terraform-aws-ecr-image) for ECR-based Lambda deployment
 
-What came first --- the chicken or the egg? AWS engineers don't know either.
+Which came first --- the chicken or the egg? AWS engineers don't know either.
 
 If you want to deploy a docker-based Lambda function, you need an image in
-place. To build an image, you need a pipeline building that image and updating
-the lambda --- which doesn't exist yet.
+place. To build an image, you need a pipeline to build that image and update
+the function which doesn't exist yet.
 
 I ended up studying the registry specification and publishing a module that
 uses curl to fetch and push a lightweight `alpine` image as a placeholder ---
