@@ -26,7 +26,7 @@ repos:
         files: .*Dockerfile[^.]*(\.[^.]*)?$
 
   - repo: https://github.com/adhtruong/mirrors-typos
-    rev: v1.31.1
+    rev: v1.32.0
     hooks:
       - id: typos
 

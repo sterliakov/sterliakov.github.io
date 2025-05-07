@@ -59,7 +59,7 @@ a huge dataset.
 Here are a few aspects of the implementation I love the most (and was personally
 responsible for):
 
-* **Fully serverless architecture**: THe core of the Simpleem platform is
+* **Fully serverless architecture**: The core of the Simpleem platform is
   powered by AWS lambda and orchestrated by AWS Step Functions, our inference
   engine (Python, Torch) handles many short chunks of a video in parallel,
   alongside audio analysis and transcription, achieving excellent observability
