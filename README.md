@@ -123,14 +123,15 @@ open an issue, wait for the results to be reported there. Done!
 
 ### Simple time tracker client: [`toggl`](https://github.com/sterliakov/toggl)
 
-I've been using Toggl to track my work hours until they have [deprecated](https://github.com/toggl-open-source/toggldesktop)
+I've been using Toggl to track my work hours until they have
+[deprecated](https://github.com/toggl-open-source/toggldesktop)
 the native Linux app and suggested using a browser extension instead. I'm
 allergic to browser extensions for everyday tasks, so I built a
 minimal Rust-based client tailored to my own needs.
 
-The client has to deal with some unique API design: Toggl API returns time
-**in profile timezone** --- certainly the best way to handle datetimes
-that sure will never get out of sync.
+Recently they have introduced rather low API rate limits: 30 RPH on a free
+plan. I had to rewrite the update logic to stay under those limits,
+but I still enjoy using the tracker.
 
 For distribution, I packaged binary builds via NPM --- one for each
 platform/arch, and one meta-package to <s>rule them all</s>
